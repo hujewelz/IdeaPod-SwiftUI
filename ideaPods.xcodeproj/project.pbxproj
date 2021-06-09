@@ -16,6 +16,8 @@
 		C22F1843266F197A004891B9 /* DoorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22F1842266F197A004891B9 /* DoorView.swift */; };
 		C22F1845266F19A8004891B9 /* MineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22F1844266F19A8004891B9 /* MineView.swift */; };
 		C22F1848266F1C5C004891B9 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22F1847266F1C5C004891B9 /* Images.swift */; };
+		C25727DF2670999400686B78 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727DE2670999400686B78 /* Screen.swift */; };
+		C25727E12670A43A00686B78 /* ScheduleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727E02670A43A00686B78 /* ScheduleDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		C22F1842266F197A004891B9 /* DoorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorView.swift; sourceTree = "<group>"; };
 		C22F1844266F19A8004891B9 /* MineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineView.swift; sourceTree = "<group>"; };
 		C22F1847266F1C5C004891B9 /* Images.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; tabWidth = 2; };
+		C25727DE2670999400686B78 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		C25727E02670A43A00686B78 /* ScheduleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		C22F182D266F1742004891B9 /* ideaPods */ = {
 			isa = PBXGroup;
 			children = (
+				C25727DD266F67B800686B78 /* Models */,
 				C22F1846266F1C3C004891B9 /* Constant */,
 				C22F183D266F18D8004891B9 /* Views */,
 				C22F182E266F1742004891B9 /* ideaPodsApp.swift */,
@@ -90,6 +95,7 @@
 				C22F1840266F1957004891B9 /* ScheduleView.swift */,
 				C22F1842266F197A004891B9 /* DoorView.swift */,
 				C22F1844266F19A8004891B9 /* MineView.swift */,
+				C25727E02670A43A00686B78 /* ScheduleDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -98,8 +104,16 @@
 			isa = PBXGroup;
 			children = (
 				C22F1847266F1C5C004891B9 /* Images.swift */,
+				C25727DE2670999400686B78 /* Screen.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		C25727DD266F67B800686B78 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +192,8 @@
 				C22F1831266F1742004891B9 /* ContentView.swift in Sources */,
 				C22F182F266F1742004891B9 /* ideaPodsApp.swift in Sources */,
 				C22F1843266F197A004891B9 /* DoorView.swift in Sources */,
+				C25727DF2670999400686B78 /* Screen.swift in Sources */,
+				C25727E12670A43A00686B78 /* ScheduleDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

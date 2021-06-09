@@ -9,39 +9,64 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var selection: Tab = .home
+  
   enum Tab {
     case home
     case schedule
+    case booking
     case mine
   }
   
   var body: some View {
-    TabView(selection: $selection) {
-      HomeView()
-        .tabItem {
-          Image.TabBar.home
-          Text("Home")
+    ZStack(alignment: .bottom) {
+      TabView(selection: $selection) {
+        HomeView()
+          .tabItem {
+            Image.TabBar.home
+            Text("Home")
+          }
+          .tag(Tab.home)
+        ScheduleView()
+          .tabItem {
+            Image.TabBar.schedule
+            Text("Schedule")
+          }
+          .tag(Tab.schedule)
+        Text("placeholder")
+        Text("Booking")
+          .tabItem {
+            Image.TabBar.booking
+            Text("Booking")
+          }
+          .tag(Tab.booking)
+        MineView()
+          .tabItem {
+            Image.TabBar.mine
+            Text("Mine")
+          }
+          .tag(Tab.mine)
+      }
+      .accentColor(.primary)
+
+      Image(systemName: "viewfinder.circle")
+        .font(.system(size: 38))
+        .frame(width: UIScreen.width/5, height: 49, alignment: .center)
+        .onTapGesture {
+          print("tap...")
         }
-        .tag(Tab.home)
-      ScheduleView()
-        .tabItem {
-          Image.TabBar.schedule
-          Text("Schedule")
-        }
-        .tag(Tab.schedule)
-      MineView()
-        .tabItem {
-          Image.TabBar.mine
-          Text("Mine")
-        }
-        .tag(Tab.mine)
     }
-    .accentColor(.red)
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    Group {
+      ContentView()
+        .preferredColorScheme(.light)
+      ContentView()
+        .preferredColorScheme(.dark)
+      
+    }
+    
   }
 }
