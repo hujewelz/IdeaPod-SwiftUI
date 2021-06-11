@@ -13,7 +13,7 @@ struct ScheduleView: View {
       ScrollView {
         LazyVStack {
           ForEach(1...10, id: \.self) { count in
-            NavigationLink(destination: ScheduleDetailView()) {
+            NavigationLink(destination: ScheduleDetail()) {
               ScheduleCell()
             }
           }
