@@ -18,43 +18,44 @@ struct ContentView: View {
   }
   
   var body: some View {
-    ZStack(alignment: .bottom) {
-      TabView(selection: $selection) {
-        HomeView()
-          .tabItem {
-            Image.TabBar.home
-            Text("Home")
-          }
-          .tag(Tab.home)
-        ScheduleView()
-          .tabItem {
-            Image.TabBar.schedule
-            Text("Schedule")
-          }
-          .tag(Tab.schedule)
-        Text("placeholder")
-        Text("Booking")
-          .tabItem {
-            Image.TabBar.booking
-            Text("Booking")
-          }
-          .tag(Tab.booking)
-        MineView()
-          .tabItem {
-            Image.TabBar.mine
-            Text("Mine")
-          }
-          .tag(Tab.mine)
-      }
-      .accentColor(.primary)
-
-      Image(systemName: "viewfinder.circle")
-        .font(.system(size: 38))
-        .frame(width: UIScreen.width/5, height: 49, alignment: .center)
-        .onTapGesture {
-          print("tap...")
-        }
-    }
+//    ZStack(alignment: .bottom) {
+//      TabView(selection: $selection) {
+//        HomeView()
+//          .tabItem {
+//            Image.TabBar.home
+//            Text("Home")
+//          }
+//          .tag(Tab.home)
+//        ScheduleView()
+//          .tabItem {
+//            Image.TabBar.schedule
+//            Text("Schedule")
+//          }
+//          .tag(Tab.schedule)
+//        Text("placeholder")
+//        RoomList()
+//          .tabItem {
+//            Image.TabBar.booking
+//            Text("Booking")
+//          }
+//          .tag(Tab.booking)
+//        MineView()
+//          .tabItem {
+//            Image.TabBar.mine
+//            Text("Mine")
+//          }
+//          .tag(Tab.mine)
+//      }
+//      .accentColor(.primary)
+//
+//      Image(systemName: "viewfinder.circle")
+//        .font(.system(size: 38))
+//        .frame(width: UIScreen.width/5, height: 49, alignment: .center)
+//        .onTapGesture {
+//          print("tap...")
+//        }
+//    }
+    RoomList()
   }
 }
 

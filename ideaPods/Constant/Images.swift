@@ -15,4 +15,9 @@ extension Image {
     static let booking = Image(systemName: "square.stack.3d.up")
     static let mine = Image("mine")
   }
+  
+  enum Booking {
+    static let people = Image("icon-booking-people")
+    static let price = Image("icon-booking-price")
+  }
 }

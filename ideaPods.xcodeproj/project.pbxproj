@@ -18,6 +18,9 @@
 		C22F1848266F1C5C004891B9 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22F1847266F1C5C004891B9 /* Images.swift */; };
 		C25727DF2670999400686B78 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727DE2670999400686B78 /* Screen.swift */; };
 		C25727E12670A43A00686B78 /* ScheduleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727E02670A43A00686B78 /* ScheduleDetail.swift */; };
+		C25727E3267317BB00686B78 /* RoomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727E2267317BB00686B78 /* RoomList.swift */; };
+		C25727E526733DCC00686B78 /* TimeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727E426733DCC00686B78 /* TimeLine.swift */; };
+		C25727E726734EB500686B78 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727E626734EB500686B78 /* NavigationBarModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		C22F1847266F1C5C004891B9 /* Images.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; tabWidth = 2; };
 		C25727DE2670999400686B78 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		C25727E02670A43A00686B78 /* ScheduleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetail.swift; sourceTree = "<group>"; };
+		C25727E2267317BB00686B78 /* RoomList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomList.swift; sourceTree = "<group>"; };
+		C25727E426733DCC00686B78 /* TimeLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLine.swift; sourceTree = "<group>"; };
+		C25727E626734EB500686B78 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,9 @@
 				C22F1842266F197A004891B9 /* DoorView.swift */,
 				C22F1844266F19A8004891B9 /* MineView.swift */,
 				C25727E02670A43A00686B78 /* ScheduleDetail.swift */,
+				C25727E2267317BB00686B78 /* RoomList.swift */,
+				C25727E426733DCC00686B78 /* TimeLine.swift */,
+				C25727E626734EB500686B78 /* NavigationBarModifier.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,9 +194,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C25727E3267317BB00686B78 /* RoomList.swift in Sources */,
+				C25727E726734EB500686B78 /* NavigationBarModifier.swift in Sources */,
 				C22F1848266F1C5C004891B9 /* Images.swift in Sources */,
 				C22F183F266F18E9004891B9 /* HomeView.swift in Sources */,
 				C22F1845266F19A8004891B9 /* MineView.swift in Sources */,
+				C25727E526733DCC00686B78 /* TimeLine.swift in Sources */,
 				C22F1841266F1957004891B9 /* ScheduleView.swift in Sources */,
 				C22F1831266F1742004891B9 /* ContentView.swift in Sources */,
 				C22F182F266F1742004891B9 /* ideaPodsApp.swift in Sources */,
