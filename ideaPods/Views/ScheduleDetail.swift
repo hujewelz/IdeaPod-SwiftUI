@@ -8,43 +8,69 @@
 import SwiftUI
 
 struct ScheduleDetail: View {
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+  
   var body: some View {
-    ScrollView {
-      VStack(alignment: .leading, spacing: 16) {
-        Image("home_04")
-          .resizable()
-          .aspectRatio(contentMode: .fill)
-          .frame(maxWidth: .infinity)
+    GeometryReader { proxy in
+      ZStack(alignment: .top) {
+        navigationBar
+          .zIndex(999)
+          .frame(width: proxy.size.width, height: 44)
         
-        buildHeader()
-        
-        VStack(alignment: .leading, spacing: 16) {
-          Label("2021-04-26  10:30-12:00，90分钟", systemImage: "clock").font(.subheadline)
-          Label("北京市朝阳区通惠河北路郎家园6号郎园vintage3号楼1层", systemImage: "location").font(.subheadline)
-          Label("当天需要开一下新的需求评审会议", systemImage: "square.and.pencil").font(.subheadline)
-          Label("300 积分", systemImage: "yensign.circle").font(.subheadline)
+        ScrollView {
+          VStack(alignment: .leading, spacing: 16) {
+            Image("home_04")
+              .resizable()
+              .aspectRatio(contentMode: .fill)
+              .frame(maxWidth: .infinity)
+            
+            buildHeader()
+            
+            VStack(alignment: .leading, spacing: 16) {
+              Label("2021-04-26  10:30-12:00，90分钟", systemImage: "clock").font(.subheadline)
+              Label("北京市朝阳区通惠河北路郎家园6号郎园vintage3号楼1层", systemImage: "location").font(.subheadline)
+              Label("当天需要开一下新的需求评审会议", systemImage: "square.and.pencil").font(.subheadline)
+              Label("300 积分", systemImage: "yensign.circle").font(.subheadline)
+            }
+            .padding()
+            
+            buildActionSection(title: "定制服务", desc: "会议结束前20分钟无法定制服务", buttonTitle: "选择")
+            buildActionSection(title: "取消预订", desc: "预订取消规则", buttonTitle: "取消")
+            Spacer()
+            
+            Button("分享邀请") {
+              
+            }
+            .font(.callout)
+            .frame(height: 46)
+            .frame(maxWidth: .infinity)
+            .foregroundColor(Color.white)
+            .background(Color.red)
+            .clipShape(RoundedRectangle(cornerRadius: 23))
+            .padding(32)
+          }
         }
-        .padding()
-        //      .padding(.horizontal)
-        
-        buildActionSection(title: "定制服务", desc: "会议结束前20分钟无法定制服务", buttonTitle: "选择")
-        buildActionSection(title: "取消预订", desc: "预订取消规则", buttonTitle: "取消")
-        Spacer()
-        
-        Button("分享邀请") {
-          
-        }
-        .font(.callout)
-        .frame(height: 46)
-        .frame(maxWidth: .infinity)
-        .foregroundColor(Color.white)
-        .background(Color.red)
-        .clipShape(RoundedRectangle(cornerRadius: 23))
-        .padding(32)
+        .edgesIgnoringSafeArea(.top)
       }
     }
-    .edgesIgnoringSafeArea(.top)
-    .navigationBarTitleDisplayMode(.inline)
+    .navigationBarHidden(true)
+  }
+  
+  private var navigationBar: some View {
+      HStack {
+        Button(action: {
+          presentationMode.wrappedValue.dismiss()
+        }, label: {
+          Image(systemName: "chevron.backward")
+            .font(.headline)
+            .padding(.horizontal)
+            .background(Color.white.clipShape(Circle())
+                          .frame(width: 38, height: 38).blur(radius: 3.0)
+            )
+        })
+        Spacer()
+      }
+      .padding()
   }
   
   private func buildHeader() -> some View {
