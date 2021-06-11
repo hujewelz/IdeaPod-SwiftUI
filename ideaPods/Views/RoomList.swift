@@ -15,7 +15,9 @@ struct RoomList: View {
           Spacer()
           ScrollView {
             LazyVStack {
-              RoomCell()
+              NavigationLink(destination: RoomDetail()){
+                RoomCell()
+              }
             }
             .padding()
           }
@@ -64,14 +66,15 @@ struct RoomCell: View {
       VStack(alignment: .leading) {
         Image("home_03")
           .resizable()
-          .frame(height: 175)
-          .fixedSize()
           .aspectRatio(contentMode: .fill)
+          .frame(maxHeight: 175)
+          .clipped()
         
         VStack(alignment: .leading, spacing: 6) {
           Text("空中会议室")
             .font(.headline)
             .fontWeight(.medium)
+            .foregroundColor(.primary)
           Text("ideaPod guomao")
             .foregroundColor(Color.primary.opacity(0.8))
             .font(.caption)

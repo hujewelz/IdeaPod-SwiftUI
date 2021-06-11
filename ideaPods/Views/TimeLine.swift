@@ -34,8 +34,6 @@ class TimeLineShap: UIView {
   }
   
   override func draw(_ rect: CGRect) {
-    
-    
     let path = UIBezierPath()
     
     for i in 0...48 {
