@@ -25,17 +25,18 @@ struct NavigationBarModifier: ViewModifier {
   }
   
   func body(content: Content) -> some View {
-    ZStack {
-      content
-      VStack {
-        GeometryReader { proxy in
-          Color(color)
-            .frame(height: proxy.safeAreaInsets.top)
-            .edgesIgnoringSafeArea(.top)
-          Spacer()
-        }
-      }
-    }
+    content
+//    ZStack {
+//      content
+////      VStack {
+////        GeometryReader { proxy in
+////          Color(color)
+////            .frame(height: proxy.safeAreaInsets.top)
+////            .edgesIgnoringSafeArea(.top)
+////          Spacer()
+////        }
+////      }
+//    }
   }
 }
 

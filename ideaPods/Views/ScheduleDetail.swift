@@ -11,11 +11,11 @@ struct ScheduleDetail: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
   var body: some View {
-    GeometryReader { proxy in
-      ZStack(alignment: .top) {
-        navigationBar
-          .zIndex(999)
-          .frame(width: proxy.size.width, height: 44)
+//    GeometryReader { proxy in
+//      ZStack(alignment: .top) {
+//        navigationBar
+//          .zIndex(999)
+//          .frame(width: proxy.size.width, height: 44)
         
         ScrollView {
           VStack(alignment: .leading, spacing: 16) {
@@ -50,28 +50,28 @@ struct ScheduleDetail: View {
             .padding(32)
           }
         }
-        .edgesIgnoringSafeArea(.top)
-      }
-    }
-    .navigationBarHidden(true)
+        .customNavigationBar()
+//        .edgesIgnoringSafeArea(.top)
+//      }.navigationBarHidden(true)
+    
   }
   
-  private var navigationBar: some View {
-      HStack {
-        Button(action: {
-          presentationMode.wrappedValue.dismiss()
-        }, label: {
-          Image(systemName: "chevron.backward")
-            .font(.headline)
-            .padding(.horizontal)
-            .background(Color.white.clipShape(Circle())
-                          .frame(width: 38, height: 38).blur(radius: 3.0)
-            )
-        })
-        Spacer()
-      }
-      .padding()
-  }
+//  private var navigationBar: some View {
+//      HStack {
+//        Button(action: {
+//          presentationMode.wrappedValue.dismiss()
+//        }, label: {
+//          Image(systemName: "chevron.backward")
+//            .font(.headline)
+//            .padding(.horizontal)
+//            .background(Color.white.clipShape(Circle())
+//                          .frame(width: 38, height: 38).blur(radius: 3.0)
+//            )
+//        })
+//        Spacer()
+//      }
+//      .padding()
+//  }
   
   private func buildHeader() -> some View {
     VStack(alignment: .leading, spacing: 8) {

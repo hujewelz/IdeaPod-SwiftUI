@@ -11,9 +11,9 @@ struct RoomDetail: View {
   var body: some View {
     VStack(spacing: 0) {
       content
-      .edgesIgnoringSafeArea(.top)
       bottomBar
     }
+    .customNavigationBar()
   }
   
   private var requirements: [(String, String)] = [

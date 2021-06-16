@@ -22,6 +22,7 @@
 		C25727E526733DCC00686B78 /* TimeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727E426733DCC00686B78 /* TimeLine.swift */; };
 		C25727E726734EB500686B78 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727E626734EB500686B78 /* NavigationBarModifier.swift */; };
 		C25727E9267365CA00686B78 /* RoomDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727E8267365CA00686B78 /* RoomDetail.swift */; };
+		C2D87B6026784A9F00DC44ED /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D87B5F26784A9F00DC44ED /* CustomNavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		C25727E426733DCC00686B78 /* TimeLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLine.swift; sourceTree = "<group>"; };
 		C25727E626734EB500686B78 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		C25727E8267365CA00686B78 /* RoomDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetail.swift; sourceTree = "<group>"; };
+		C2D87B5F26784A9F00DC44ED /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				C25727E426733DCC00686B78 /* TimeLine.swift */,
 				C25727E626734EB500686B78 /* NavigationBarModifier.swift */,
 				C25727E8267365CA00686B78 /* RoomDetail.swift */,
+				C2D87B5F26784A9F00DC44ED /* CustomNavigationBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				C22F183F266F18E9004891B9 /* HomeView.swift in Sources */,
 				C22F1845266F19A8004891B9 /* MineView.swift in Sources */,
 				C25727E9267365CA00686B78 /* RoomDetail.swift in Sources */,
+				C2D87B6026784A9F00DC44ED /* CustomNavigationBar.swift in Sources */,
 				C25727E526733DCC00686B78 /* TimeLine.swift in Sources */,
 				C22F1841266F1957004891B9 /* ScheduleView.swift in Sources */,
 				C22F1831266F1742004891B9 /* ContentView.swift in Sources */,

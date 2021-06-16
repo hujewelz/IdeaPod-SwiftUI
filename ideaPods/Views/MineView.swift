@@ -114,7 +114,7 @@ struct MineView: View {
         HStack(spacing: 12) {
           Image(item.icon)
           Text(item.title)
-            .font(.subheadline)
+            
           Spacer()
           Image(systemName: "chevron.right")
             .font(.subheadline.bold())
