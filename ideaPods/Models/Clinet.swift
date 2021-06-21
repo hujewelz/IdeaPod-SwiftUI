@@ -66,14 +66,19 @@ final class NetworkClient<M, E>: ObservableObject where M: Decodable, E: EndPoin
   }
   
   func start() {
-    subscriber = NetworkClient.request(endPoint).sink { completion in
-      print(completion)
+    subscriber = NetworkClient.request(endPoint).sink { [weak self] completion in
+      switch completion {
+      case .failure:
+        self?.value = nil
+      case .finished:
+        break
+      }
     } receiveValue: { [weak self] (value: M) in
       self?.value = value
     }
   }
   
-  private static func request<T>(_ endPoint: EndPoint) -> AnyPublisher<T, Error> where T: Decodable {
+  static func request<T>(_ endPoint: EndPoint) -> AnyPublisher<T, Error> where T: Decodable {
     let request = Request(baseURL: endPoint.baseURL,
                           path: endPoint.path,
                           method: endPoint.method,
