@@ -41,13 +41,14 @@ struct LoginView: View {
       .cornerRadius(8)
       
       Button("登录", action: viewModel.login)
-      .disabled(true)
-      .foregroundColor(Color(.systemBackground))
-      .padding()
-      .frame(maxWidth: .infinity)
-      .background(Color.red)
-      .cornerRadius(6)
-      .padding(.top, 70)
+        .disabled(!viewModel.loginEnabled)
+        .foregroundColor(Color(.systemBackground))
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(Color.red)
+        .opacity(viewModel.loginEnabled ? 1 : 0.3)
+        .cornerRadius(6)
+        .padding(.top, 70)
     }
     .padding(.horizontal, 32)
   }

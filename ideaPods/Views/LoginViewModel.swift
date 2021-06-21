@@ -18,21 +18,19 @@ final class LoginViewModel: ObservableObject {
   @Published var loginEnabled = false
   
   private var timer: AnyCancellable?
-  private var dispose: Set<AnyCancellable> = []
+  private var subscribers: Set<AnyCancellable> = []
   
   init() {
- 
-    $phone.combineLatest($code).sink { value in
-      print(value)
-    }.store(in: &dispose)
-
+    $phone.combineLatest($code)
+      .map { $0.0.count == 11 && $0.1.count == 6 }
+      .assign(to: &$loginEnabled)
   }
   
   func countdown() {
     veryCodeBtnTitle = "59s"
     veryCodeBtnEnabled = false
     
-    timer =  Timer.publish(every: 1, on: .main, in: .common)
+    timer = Timer.publish(every: 1, on: .main, in: .common)
       .autoconnect()
       .receive(on: DispatchQueue.main)
       .sink { [weak self] _ in
@@ -48,6 +46,15 @@ final class LoginViewModel: ObservableObject {
   }
   
   func login() {
-    
+    let param: Parameters = [
+      "phone": phone,
+      "captcha": code
+    ]
+    request(API.login(param)).sink { completion in
+      print(completion)
+    } receiveValue: { (user: User) in
+      print(user)
+    }
+    .store(in: &subscribers)
   }
 }

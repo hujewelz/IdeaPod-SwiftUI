@@ -55,6 +55,8 @@ extension Signature {
   }
 }
 
+
+
 final class NetworkClient<M, E>: ObservableObject where M: Decodable, E: EndPoint {
   @Published var value: M?
   private var subscriber: AnyCancellable?
@@ -87,4 +89,14 @@ final class NetworkClient<M, E>: ObservableObject where M: Decodable, E: EndPoin
                           encoder: endPoint.encoder)
     return fetch(request)
   }
+}
+
+func request<T>(_ endPoint: EndPoint) -> AnyPublisher<T, Error> where T: Decodable {
+  let request = Request(baseURL: endPoint.baseURL,
+                        path: endPoint.path,
+                        method: endPoint.method,
+                        parameters: endPoint.parameters,
+                        httpHeaders: endPoint.httpHeaders,
+                        encoder: endPoint.encoder)
+  return fetch(request)
 }

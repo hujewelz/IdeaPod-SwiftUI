@@ -22,7 +22,10 @@ extension EndPoint {
   
   var parameters: Parameters? { nil }
   
-  var httpHeaders: HttpHeaders? { nil }
+  var httpHeaders: HttpHeaders? {
+    let sig = Signature.generate(method: method, path: path, appId: Env.appId, token: "")
+    return sig.httpHeaders
+  }
   
   var encoder: HTTPRequestEncoder { JSONHTTPRequestEncoder() }
 }
@@ -31,19 +34,31 @@ extension Request: EndPoint {}
 
 
 enum API {
-  case test
+  case login(Parameters)
 }
 
 extension API: EndPoint {
-  var path: String {
-    "/test"
-  }
-  
   var baseURL: String { Env.baseURL }
   
-  var httpHeaders: HttpHeaders? {
-    let sig = Signature.generate(method: method, path: path, appId: Env.appId, token: "")
-    return sig.httpHeaders
+  var path: String {
+    switch self {
+    case .login:
+      return "/login/phone"
+    }
+  }
+  
+  var method: HTTPMethod {
+    switch self {
+    case .login:
+      return .post
+    }
+  }
+  
+  var parameters: Parameters? {
+    switch self {
+    case .login(let param):
+      return param
+    }
   }
 }
 
