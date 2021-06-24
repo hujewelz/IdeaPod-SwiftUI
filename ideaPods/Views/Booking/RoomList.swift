@@ -8,27 +8,34 @@
 import SwiftUI
 
 struct RoomList: View {
-    var body: some View {
-      NavigationView {
-        VStack() {
-          DateSelector()
-          Spacer()
-          ScrollView {
-            LazyVStack {
-              NavigationLink(destination: RoomDetail()){
-                RoomCell()
+  @StateObject private var viewModel = RoomListViewModel()
+  
+  var body: some View {
+    NavigationView {
+      VStack() {
+        DateSelector()
+        Spacer()
+        ScrollView {
+          LazyVStack {
+            ForEach(viewModel.rooms) { room in
+              NavigationLink(destination: /*RoomDetail(room: room)*/Text("Detail")){
+                RoomCell(room: room)
               }
             }
-            .padding()
           }
-          .background(Color(.systemGroupedBackground))
-          .edgesIgnoringSafeArea(.bottom)
+          .padding()
         }
-        .navigationTitle("预订")
-        .navigationBarTitleDisplayMode(.inline)
+        .background(Color(.systemGroupedBackground))
+        .edgesIgnoringSafeArea(.bottom)
       }
-      .navigationBarBackgroundColor(UIColor.systemBackground)
+      .navigationTitle("预订")
+      .navigationBarTitleDisplayMode(.inline)
     }
+    .navigationBarBackgroundColor(UIColor.systemBackground)
+    .onAppear {
+      viewModel.fetchRooms()
+    }
+  }
 }
 
 struct DateSelector: View {
@@ -62,6 +69,8 @@ struct DateSelector: View {
 
 
 struct RoomCell: View {
+  var room: Room
+  
   var body: some View {
       VStack(alignment: .leading) {
         Image("home_03")
@@ -71,26 +80,26 @@ struct RoomCell: View {
           .clipped()
         
         VStack(alignment: .leading, spacing: 6) {
-          Text("空中会议室")
+          Text(room.title)
             .font(.headline)
             .fontWeight(.medium)
             .foregroundColor(.primary)
-          Text("ideaPod guomao")
+          Text(room.store.name)
             .foregroundColor(Color.primary.opacity(0.8))
             .font(.caption)
             .fontWeight(.thin)
           
           VStack(alignment: .leading, spacing: 4) {
-            Label("可容纳 1-10 人", image: "icon-booking-people")
+            Label("可容纳 1-\(room.attrs.capacity) 人", image: "icon-booking-people")
               .foregroundColor(Color.primary.opacity(0.8))
               .font(.caption)
-            Label("400积分/灯泡 每小时", image: "icon-booking-price")
+            Label("\(room.point)积分/灯泡 每小时", image: "icon-booking-price")
               .foregroundColor(Color.primary.opacity(0.8))
               .font(.caption)
           }
           .padding(.vertical, 10)
           
-          TimeLine()
+          TimeLine(timeRanges: room.timeRanges)
             .padding(.vertical, 10)
         }
         .padding(.vertical, 8)
@@ -103,10 +112,11 @@ struct RoomCell: View {
 }
 
 struct TimeLine: View {
+  var timeRanges: [TimeRange]
+  
   var body: some View {
     ScrollView(.horizontal, showsIndicators: false, content: {
-      TimeLineView()
-//        .frame(height: 60)
+      TimeLineView(timeRanges: timeRanges)
     })
   }
 }
@@ -115,6 +125,5 @@ struct RoomList_Previews: PreviewProvider {
     static var previews: some View {
       RoomList().preferredColorScheme(.light)
       RoomList().preferredColorScheme(.dark)
-      TimeLine()
     }
 }

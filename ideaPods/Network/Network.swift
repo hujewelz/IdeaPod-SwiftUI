@@ -153,6 +153,9 @@ func fetch<T>(_ request: URLRequestConvertible) -> AnyPublisher<T, Error> where 
           throw URLError(.badServerResponse)
         }
         if httpResponse.statusCode == 200 {
+          if let jsonObj = try? JSONSerialization.jsonObject(with: ele.data, options: []) {
+            print("👏RESULT: ", jsonObj)
+          }
           return ele.data
         }
         let errorData = try JSONDecoder().decode(ResponseError.self, from: ele.data)

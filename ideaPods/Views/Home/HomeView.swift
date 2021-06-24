@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+  @StateObject private var viewModel = HomeViewModel()
   
   var body: some View {
     NavigationView {
@@ -15,9 +16,9 @@ struct HomeView: View {
         Banner()
         HStack{
           Image(uiImage: #imageLiteral(resourceName: "icon_location")).foregroundColor(.primary)
-          Text("ideaPod Guomao")
+          Text(viewModel.currentStore?.name ?? "")
           Spacer()
-          Button(action: {}, label: {
+          Button(action: viewModel.presetnActionSheet, label: {
             Text("切换门店")
               .foregroundColor(Color.black)
               .font(.system(size: 12, weight: .medium))
@@ -38,7 +39,20 @@ struct HomeView: View {
       }
       .navigationBarHidden(true)
       .ignoresSafeArea(.container, edges: .top)
+      .actionSheet(isPresented: $viewModel.isPresentedActionSheet, content: actionSheet)
     }
+    .onAppear {
+      viewModel.fetchData()
+    }
+  }
+  
+  private func actionSheet() -> ActionSheet {
+    var buttons = viewModel.stores
+      .map { store in ActionSheet.Button.default(Text(store.name)) {
+        viewModel.switchStore(store)
+      } }
+    buttons.append(.cancel())
+    return ActionSheet(title: Text("切换门店"), message: nil, buttons: buttons)
   }
 }
 

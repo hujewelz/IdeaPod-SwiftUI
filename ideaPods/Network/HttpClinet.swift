@@ -46,8 +46,6 @@ struct Signature {
     hmac.update(data: strToSign.data(using: .ascii)!)
     let result = hmac.finalize()
     let sign = Data(result).base64EncodedString()
-    print("strToSign:\n", strToSign)
-    print("sign: ", sign)
     return Signature(token: token, appId: appId, timestamp: timestamp, nonce: nonce, signature: sign)
   }
 }

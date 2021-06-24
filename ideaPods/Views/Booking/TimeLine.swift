@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct TimeLineView: UIViewRepresentable {
+  let timeRanges: [TimeRange]
   
   func makeUIView(context: Context) -> TimeLineShap {
     let timeline = TimeLineShap()
+    timeline.timeRanges = timeRanges
     timeline.backgroundColor = .clear
     timeline.frame = CGRect(x: 0, y: 0, width: 48 * 20 + 2 + 14, height: 60)
     return timeline
@@ -22,6 +24,7 @@ struct TimeLineView: UIViewRepresentable {
 }
 
 class TimeLineShap: UIView {
+  var timeRanges: [TimeRange] = []
   
   override var intrinsicContentSize: CGSize {
     CGSize(width: 48 * 20 + 2 + 14, height: 60)
@@ -58,8 +61,8 @@ class TimeLineShap: UIView {
     primaryColor.withAlphaComponent(0.8).setStroke()
     path.stroke()
     
-    [0, 9].forEach {
-      let subPath = self.subPath(start: $0, count: 3)
+    timeRanges.forEach {
+      let subPath = self.subPath(start: $0.start, count: $0.end - $0.start)
       path.append(subPath)
     }
   }

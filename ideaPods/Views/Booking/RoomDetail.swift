@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RoomDetail: View {
+  var room: Room
+  
   var body: some View {
     VStack(spacing: 0) {
       content
@@ -101,7 +103,7 @@ struct RoomDetail: View {
         
         Group {
           // timeline view
-          TimeLine()
+          TimeLine(timeRanges: room.timeRanges)
             .padding(.horizontal)
           
           // unvaliable time
@@ -192,8 +194,8 @@ struct RoomDetail: View {
   }
 }
 
-struct RoomDetail_Previews: PreviewProvider {
-    static var previews: some View {
-      RoomDetail().preferredColorScheme(.light)
-    }
-}
+//struct RoomDetail_Previews: PreviewProvider {
+//    static var previews: some View {
+//      RoomDetail(room: <#Room#>).preferredColorScheme(.light)
+//    }
+//}
