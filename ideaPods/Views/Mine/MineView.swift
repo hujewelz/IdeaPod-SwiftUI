@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MineView: View {
+  @StateObject var viewModel = MineViewModel()
+  
   var body: some View {
     NavigationView {
       GeometryReader { proxy in
@@ -32,6 +34,9 @@ struct MineView: View {
       }
       .navigationBarHidden(true)
     }
+    .onAppear {
+      viewModel.fetchProfile()
+    }
   }
   
   private var header: some View {
@@ -42,7 +47,7 @@ struct MineView: View {
         .frame(width: 52, height: 52)
         .clipShape(RoundedRectangle(cornerRadius: 13))
         .overlay(RoundedRectangle(cornerRadius: 13).stroke(Color(.systemBackground), lineWidth: 2))
-      Text("超级灯泡人")
+      Text(viewModel.profile?.nickname ?? "")
         .bold()
         .foregroundColor(Color(.systemBackground))
       Spacer()
@@ -72,7 +77,7 @@ struct MineView: View {
           Text("积分额度")
             .font(.caption)
           HStack {
-            Text("3424")
+            Text("0")
               .font(.title3.bold())
             Button("充值") {}
               .font(.caption)
