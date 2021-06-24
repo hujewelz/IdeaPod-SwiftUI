@@ -27,7 +27,7 @@
 		C25727E726734EB500686B78 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727E626734EB500686B78 /* NavigationBarModifier.swift */; };
 		C25727E9267365CA00686B78 /* RoomDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727E8267365CA00686B78 /* RoomDetail.swift */; };
 		C2821BF6267B3321004B0999 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2821BF5267B3321004B0999 /* API.swift */; };
-		C2821BFA267B4F3F004B0999 /* Clinet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2821BF9267B4F3F004B0999 /* Clinet.swift */; };
+		C2821BFA267B4F3F004B0999 /* HttpClinet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2821BF9267B4F3F004B0999 /* HttpClinet.swift */; };
 		C28DA78E268466F40063A1CD /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DA78D268466F40063A1CD /* Response.swift */; };
 		C2CF1A3C2679B3D30037618F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF1A3B2679B3D30037618F /* Network.swift */; };
 		C2D87B6026784A9F00DC44ED /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D87B5F26784A9F00DC44ED /* CustomNavigationBar.swift */; };
@@ -56,7 +56,7 @@
 		C25727E626734EB500686B78 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		C25727E8267365CA00686B78 /* RoomDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetail.swift; sourceTree = "<group>"; };
 		C2821BF5267B3321004B0999 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		C2821BF9267B4F3F004B0999 /* Clinet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clinet.swift; sourceTree = "<group>"; };
+		C2821BF9267B4F3F004B0999 /* HttpClinet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClinet.swift; sourceTree = "<group>"; };
 		C28DA78D268466F40063A1CD /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		C2CF1A3B2679B3D30037618F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		C2D87B5F26784A9F00DC44ED /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
@@ -94,6 +94,7 @@
 		C22F182D266F1742004891B9 /* ideaPods */ = {
 			isa = PBXGroup;
 			children = (
+				C28DA78F268468570063A1CD /* Network */,
 				C25727DD266F67B800686B78 /* Models */,
 				C22F1846266F1C3C004891B9 /* Constant */,
 				C22F183D266F18D8004891B9 /* Views */,
@@ -146,13 +147,20 @@
 		C25727DD266F67B800686B78 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C2CF1A3B2679B3D30037618F /* Network.swift */,
-				C2821BF5267B3321004B0999 /* API.swift */,
-				C2821BF9267B4F3F004B0999 /* Clinet.swift */,
 				C256C528268070C3003F8410 /* User.swift */,
-				C28DA78D268466F40063A1CD /* Response.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C28DA78F268468570063A1CD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C2CF1A3B2679B3D30037618F /* Network.swift */,
+				C2821BF5267B3321004B0999 /* API.swift */,
+				C28DA78D268466F40063A1CD /* Response.swift */,
+				C2821BF9267B4F3F004B0999 /* HttpClinet.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,7 +242,7 @@
 				C25727E9267365CA00686B78 /* RoomDetail.swift in Sources */,
 				C256C52726804422003F8410 /* LoginViewModel.swift in Sources */,
 				C2D87B6026784A9F00DC44ED /* CustomNavigationBar.swift in Sources */,
-				C2821BFA267B4F3F004B0999 /* Clinet.swift in Sources */,
+				C2821BFA267B4F3F004B0999 /* HttpClinet.swift in Sources */,
 				C25727E526733DCC00686B78 /* TimeLine.swift in Sources */,
 				C22F1841266F1957004891B9 /* ScheduleView.swift in Sources */,
 				C22F1831266F1742004891B9 /* ContentView.swift in Sources */,
