@@ -105,7 +105,6 @@ struct JSONHTTPRequestEncoder: HTTPRequestEncoder {
         urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: param, options: [.fragmentsAllowed])
       }
     }
-    
     return urlRequest
   }
 }
@@ -144,10 +143,14 @@ func fetch<T>(_ request: URLRequestConvertible) -> AnyPublisher<T, Error> where 
     log(request: httpRequest)
     return URLSession.shared.dataTaskPublisher(for: httpRequest)
       .tryMap { ele -> Data in
-        guard let httpResponse = ele.response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+        guard let httpResponse = ele.response as? HTTPURLResponse else {
           throw URLError(.badServerResponse)
         }
-        return ele.data
+        if httpResponse.statusCode == 200 {
+          return ele.data
+        }
+        let errorData = try JSONDecoder().decode(ResponseError.self, from: ele.data)
+        throw CustomError.serverError(errorData)
       }
       .decode(type: T.self, decoder: JSONDecoder())
       .receive(on: DispatchQueue.main)

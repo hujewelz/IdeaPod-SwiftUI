@@ -70,17 +70,30 @@ struct Card: View {
 struct Banner: View {
   let images = ["home_03",  "home_04"]
   var body: some View {
-    ScrollView(.horizontal, showsIndicators: false) {
-      HStack(spacing: 0) {
-        ForEach(images, id: \.self) { img in
-          Image(img)
-            .resizable()
-            .scaledToFill()
-            .frame(width: 500, height: 260)
-            .clipped()
-        }
+    TabView {
+      ForEach(images, id: \.self) { img in
+        Image(img)
+          .resizable()
+          .aspectRatio(contentMode: .fill)
+          .frame(maxWidth: .infinity)
+          .clipped()
       }
     }
+    .frame(height: 260)
+    .frame(maxWidth: .infinity)
+    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+    
+//    ScrollView(.horizontal, showsIndicators: false) {
+//      HStack(spacing: 0) {
+//        ForEach(images, id: \.self) { img in
+//          Image(img)
+//            .resizable()
+//            .scaledToFill()
+//            .frame(width: 500, height: 260)
+//            .clipped()
+//        }
+//      }
+//    }
   }
 }
 

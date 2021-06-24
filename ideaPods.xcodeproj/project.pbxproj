@@ -28,6 +28,7 @@
 		C25727E9267365CA00686B78 /* RoomDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25727E8267365CA00686B78 /* RoomDetail.swift */; };
 		C2821BF6267B3321004B0999 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2821BF5267B3321004B0999 /* API.swift */; };
 		C2821BFA267B4F3F004B0999 /* Clinet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2821BF9267B4F3F004B0999 /* Clinet.swift */; };
+		C28DA78E268466F40063A1CD /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DA78D268466F40063A1CD /* Response.swift */; };
 		C2CF1A3C2679B3D30037618F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF1A3B2679B3D30037618F /* Network.swift */; };
 		C2D87B6026784A9F00DC44ED /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D87B5F26784A9F00DC44ED /* CustomNavigationBar.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		C25727E8267365CA00686B78 /* RoomDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetail.swift; sourceTree = "<group>"; };
 		C2821BF5267B3321004B0999 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C2821BF9267B4F3F004B0999 /* Clinet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clinet.swift; sourceTree = "<group>"; };
+		C28DA78D268466F40063A1CD /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		C2CF1A3B2679B3D30037618F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		C2D87B5F26784A9F00DC44ED /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +150,7 @@
 				C2821BF5267B3321004B0999 /* API.swift */,
 				C2821BF9267B4F3F004B0999 /* Clinet.swift */,
 				C256C528268070C3003F8410 /* User.swift */,
+				C28DA78D268466F40063A1CD /* Response.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				C22F1843266F197A004891B9 /* DoorView.swift in Sources */,
 				C25727DF2670999400686B78 /* Screen.swift in Sources */,
 				C256C52526803B65003F8410 /* LoginView.swift in Sources */,
+				C28DA78E268466F40063A1CD /* Response.swift in Sources */,
 				C2821BF6267B3321004B0999 /* API.swift in Sources */,
 				C25727E12670A43A00686B78 /* ScheduleDetail.swift in Sources */,
 				C256C529268070C3003F8410 /* User.swift in Sources */,

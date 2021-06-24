@@ -24,6 +24,13 @@ final class LoginViewModel: ObservableObject {
     $phone.combineLatest($code)
       .map { $0.0.count == 11 && $0.1.count == 6 }
       .assign(to: &$loginEnabled)
+    
+//    request(API.profile).sink { completion in
+//      print(completion)
+//    } receiveValue: { (a: String) in
+//      print("a")
+//    }.store(in: &subscribers)
+
   }
   
   func countdown() {
@@ -51,9 +58,11 @@ final class LoginViewModel: ObservableObject {
       "captcha": code
     ]
     request(API.login(param)).sink { completion in
-      print(completion)
+      if case .failure(let error) = completion {
+        print("Error: ", error)
+      }
     } receiveValue: { (user: User) in
-      print(user)
+      Account.store(user)
     }
     .store(in: &subscribers)
   }

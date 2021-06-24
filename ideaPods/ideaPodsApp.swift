@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct ideaPodsApp: App {
-    var body: some Scene {
-        WindowGroup {
-//            ContentView()
-          LoginView()
-        }
+  var body: some Scene {
+    WindowGroup {
+      if Account.user != nil {
+        ContentView()
+      } else {
+        LoginView()
+      }
     }
+  }
 }

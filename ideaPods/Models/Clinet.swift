@@ -21,23 +21,27 @@ struct Signature {
   var nonce: String
   var signature: String
   
-  static func generate(method: HTTPMethod, path: String, appId: String, token: String) -> Signature {
-    let timestamp = Int(Date().timeIntervalSince1970)
+  static func generate(method: HTTPMethod, path: String, appId: String, token: String, param: Parameters? = nil) -> Signature {
+    let timestamp = Int(Date().timeIntervalSince1970)*1000
     let nonce = UUID().uuidString
-    let body = ""
+    var body = ""
+    if let param = param, let jsonData = try? JSONSerialization.data(withJSONObject: param, options: [.fragmentsAllowed])
+       , let decoded = String(data: jsonData, encoding: .ascii) {
+      body = decoded
+    }
     let strToSign = """
-      \(appId)\n
-      \(token)\n
-      \(method.rawValue)\n
-      \(path)\n
-      \(body)\n
-      \(timestamp)\n
-      \(nonce)\n
-      """
+    \(appId)
+    \(token)
+    \(method.rawValue)
+    \(path)
+    \(body)
+    \(timestamp)
+    \(nonce)
+    """
     var hmac = HMAC<SHA256>(key: SymmetricKey(data: "Ideapod-MeshKit".data(using: .utf8)!))
-    hmac.update(data: strToSign.data(using: .utf8)!)
+    hmac.update(data: strToSign.data(using: .ascii)!)
     let result = hmac.finalize()
-    let sign = Data(result).map { String(format: "%02hhx", $0)}.joined()
+    let sign = Data(result).base64EncodedString()
     return Signature(token: token, appId: appId, timestamp: timestamp, nonce: nonce, signature: sign)
   }
 }
