@@ -23,9 +23,7 @@ extension EndPoint {
   var parameters: Parameters? { nil }
   
   var httpHeaders: HttpHeaders? {
-    let token = Account.user?.accessToken ?? ""
-    let sig = Signature.generate(method: method, path: path, appId: Env.appId, token: token, param: parameters)
-    var headers = sig.httpHeaders
+    var headers: HttpHeaders = []
     headers.append(HTTPHeader(field: .accept, value: "application/json"))
     headers.append(HTTPHeader(field: .contentType, value: "application/json"))
     return headers
@@ -40,6 +38,8 @@ extension Request: EndPoint {}
 enum API {
   case login(Parameters)
   case profile
+  case stores
+  case rooms(date: String, storeId: Int)
 }
 
 extension API: EndPoint {
@@ -50,7 +50,11 @@ extension API: EndPoint {
     case .login:
       return "/login/phone"
     case .profile:
-    return "/users/profile"
+      return "/users/profile"
+    case .stores:
+      return "/stores"
+    case .rooms:
+      return "/meeting_rooms"
     }
   }
   
@@ -67,6 +71,8 @@ extension API: EndPoint {
     switch self {
     case .login(let param):
       return param
+    case let .rooms(date, storeId):
+      return ["date": date, "storeId": storeId]
     default:
       return nil
     }

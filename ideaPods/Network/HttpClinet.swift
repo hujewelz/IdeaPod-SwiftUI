@@ -21,18 +21,22 @@ struct Signature {
   var nonce: String
   var signature: String
   
-  static func generate(method: HTTPMethod, path: String, appId: String, token: String, param: Parameters? = nil) -> Signature {
+  static func generate(request: URLRequest, appId: String, token: String) -> Signature {
     let timestamp = Int(Date().timeIntervalSince1970)*1000
     let nonce = UUID().uuidString
     var body = ""
-    if let param = param, let jsonData = try? JSONSerialization.data(withJSONObject: param, options: [.fragmentsAllowed])
-       , let decoded = String(data: jsonData, encoding: .ascii) {
+    if let httpBody = request.httpBody,
+       let decoded = String(data: httpBody, encoding: .ascii) {
       body = decoded
+    }
+    var path = request.url?.path ?? ""
+    if let query = request.url?.query {
+      path += "?\(query)"
     }
     let strToSign = """
     \(appId)
     \(token)
-    \(method.rawValue)
+    \(request.httpMethod ?? "GET")
     \(path)
     \(body)
     \(timestamp)
@@ -42,6 +46,8 @@ struct Signature {
     hmac.update(data: strToSign.data(using: .ascii)!)
     let result = hmac.finalize()
     let sign = Data(result).base64EncodedString()
+    print("strToSign:\n", strToSign)
+    print("sign: ", sign)
     return Signature(token: token, appId: appId, timestamp: timestamp, nonce: nonce, signature: sign)
   }
 }

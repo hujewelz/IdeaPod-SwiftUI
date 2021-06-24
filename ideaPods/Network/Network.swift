@@ -69,7 +69,13 @@ struct Request: URLRequestConvertible {
   func asURLRrequest() throws -> URLRequest {
     var request = try encoder.encode(self)
     request.httpMethod = method.rawValue
-    if let headers = httpHeaders {
+    
+    let token = Account.user?.accessToken ?? ""
+    let sig = Signature.generate(request: request, appId: Env.appId, token: token)
+    var headers = sig.httpHeaders
+    
+    if let httpHeaders = httpHeaders {
+      headers.append(contentsOf: httpHeaders)
       headers.forEach { header in
         request.addValue(header.value, forHTTPHeaderField: header.field)
       }
