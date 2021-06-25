@@ -40,6 +40,7 @@ enum API {
   case profile
   case stores
   case rooms(date: String, storeId: Int)
+  case pay(Parameters)
 }
 
 extension API: EndPoint {
@@ -55,12 +56,14 @@ extension API: EndPoint {
       return "/stores"
     case .rooms:
       return "/meeting_rooms"
+    case .pay:
+      return "/mall/pay"
     }
   }
   
   var method: HTTPMethod {
     switch self {
-    case .login:
+    case .login, .pay:
       return .post
     default:
       return .get
@@ -69,7 +72,7 @@ extension API: EndPoint {
   
   var parameters: Parameters? {
     switch self {
-    case .login(let param):
+    case .login(let param), .pay(let param):
       return param
     case let .rooms(date, storeId):
       return ["date": date, "storeId": storeId]

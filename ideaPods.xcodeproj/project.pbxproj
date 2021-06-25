@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C221D11D2685BB6A00BBA151 /* RoomPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C221D11C2685BB6A00BBA151 /* RoomPayment.swift */; };
+		C221D11F2685CA1B00BBA151 /* RoomPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C221D11E2685CA1B00BBA151 /* RoomPaymentViewModel.swift */; };
+		C221D1212685DBCF00BBA151 /* PayResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C221D1202685DBCF00BBA151 /* PayResult.swift */; };
 		C22F182F266F1742004891B9 /* ideaPodsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22F182E266F1742004891B9 /* ideaPodsApp.swift */; };
 		C22F1831266F1742004891B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22F1830266F1742004891B9 /* ContentView.swift */; };
 		C22F1833266F1745004891B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C22F1832266F1745004891B9 /* Assets.xcassets */; };
@@ -35,11 +38,15 @@
 		C28DA79826846DF10063A1CD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DA79726846DF10063A1CD /* HomeViewModel.swift */; };
 		C28DA79B268478EA0063A1CD /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DA79A268478EA0063A1CD /* Room.swift */; };
 		C28DA79E2684832D0063A1CD /* RoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DA79D2684832D0063A1CD /* RoomListViewModel.swift */; };
+		C28DA7A02684913D0063A1CD /* RoomDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DA79F2684913D0063A1CD /* RoomDetailViewModel.swift */; };
 		C2CF1A3C2679B3D30037618F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CF1A3B2679B3D30037618F /* Network.swift */; };
 		C2D87B6026784A9F00DC44ED /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D87B5F26784A9F00DC44ED /* CustomNavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C221D11C2685BB6A00BBA151 /* RoomPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomPayment.swift; sourceTree = "<group>"; };
+		C221D11E2685CA1B00BBA151 /* RoomPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomPaymentViewModel.swift; sourceTree = "<group>"; };
+		C221D1202685DBCF00BBA151 /* PayResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayResult.swift; sourceTree = "<group>"; };
 		C22F182B266F1742004891B9 /* ideaPods.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ideaPods.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22F182E266F1742004891B9 /* ideaPodsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ideaPodsApp.swift; sourceTree = "<group>"; };
 		C22F1830266F1742004891B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +77,7 @@
 		C28DA79726846DF10063A1CD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C28DA79A268478EA0063A1CD /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		C28DA79D2684832D0063A1CD /* RoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewModel.swift; sourceTree = "<group>"; };
+		C28DA79F2684913D0063A1CD /* RoomDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailViewModel.swift; sourceTree = "<group>"; };
 		C2CF1A3B2679B3D30037618F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		C2D87B5F26784A9F00DC44ED /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +169,7 @@
 				C28DA790268468ED0063A1CD /* Profile.swift */,
 				C28DA79526846D100063A1CD /* Store.swift */,
 				C28DA79A268478EA0063A1CD /* Room.swift */,
+				C221D1202685DBCF00BBA151 /* PayResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,6 +210,9 @@
 				C25727E426733DCC00686B78 /* TimeLine.swift */,
 				C25727E8267365CA00686B78 /* RoomDetail.swift */,
 				C28DA79D2684832D0063A1CD /* RoomListViewModel.swift */,
+				C28DA79F2684913D0063A1CD /* RoomDetailViewModel.swift */,
+				C221D11C2685BB6A00BBA151 /* RoomPayment.swift */,
+				C221D11E2685CA1B00BBA151 /* RoomPaymentViewModel.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -287,11 +299,13 @@
 				C25727E9267365CA00686B78 /* RoomDetail.swift in Sources */,
 				C256C52726804422003F8410 /* LoginViewModel.swift in Sources */,
 				C2D87B6026784A9F00DC44ED /* CustomNavigationBar.swift in Sources */,
+				C221D11D2685BB6A00BBA151 /* RoomPayment.swift in Sources */,
 				C2821BFA267B4F3F004B0999 /* HttpClinet.swift in Sources */,
 				C25727E526733DCC00686B78 /* TimeLine.swift in Sources */,
 				C22F1841266F1957004891B9 /* ScheduleView.swift in Sources */,
 				C22F1831266F1742004891B9 /* ContentView.swift in Sources */,
 				C22F182F266F1742004891B9 /* ideaPodsApp.swift in Sources */,
+				C221D1212685DBCF00BBA151 /* PayResult.swift in Sources */,
 				C22F1843266F197A004891B9 /* DoorView.swift in Sources */,
 				C28DA79E2684832D0063A1CD /* RoomListViewModel.swift in Sources */,
 				C25727DF2670999400686B78 /* Screen.swift in Sources */,
@@ -300,8 +314,10 @@
 				C28DA78E268466F40063A1CD /* Response.swift in Sources */,
 				C28DA79B268478EA0063A1CD /* Room.swift in Sources */,
 				C2821BF6267B3321004B0999 /* API.swift in Sources */,
+				C221D11F2685CA1B00BBA151 /* RoomPaymentViewModel.swift in Sources */,
 				C25727E12670A43A00686B78 /* ScheduleDetail.swift in Sources */,
 				C256C529268070C3003F8410 /* User.swift in Sources */,
+				C28DA7A02684913D0063A1CD /* RoomDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

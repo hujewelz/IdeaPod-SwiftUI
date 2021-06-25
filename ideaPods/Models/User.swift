@@ -24,7 +24,10 @@ final class Account {
   static var user: User? {
     if let data = UserDefaults.standard.data(forKey: "loggedinuser")
        , let user = try? JSONDecoder().decode(User.self, from: data) {
-      //TODO: check access token expired
+      let expireDate = Date(timeIntervalSince1970: Double(user.accessTokenExpiredAt)/1000)
+      if expireDate <= Date() {
+        return nil
+      }
       return user
     }
     return nil

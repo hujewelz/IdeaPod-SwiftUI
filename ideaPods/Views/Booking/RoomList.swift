@@ -18,7 +18,7 @@ struct RoomList: View {
         ScrollView {
           LazyVStack {
             ForEach(viewModel.rooms) { room in
-              NavigationLink(destination: /*RoomDetail(room: room)*/Text("Detail")){
+              NavigationLink(destination: RoomDetail(viewModel: RoomDetailViewModel(room: room))){
                 RoomCell(room: room)
               }
             }

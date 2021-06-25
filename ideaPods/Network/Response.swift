@@ -10,7 +10,7 @@ import Foundation
 struct ResponseError: Codable {
   let code: String
   let message: String
-  let detail: String
+  let detail: String?
 }
 
 enum CustomError: Error {

@@ -12,6 +12,7 @@ typealias TimeRange = (start: Int, end: Int)
 
 struct Room: Codable, Identifiable {
   let id: Int
+  let productId: Int
   let title: String
   let cover: String
   let images: [String]
@@ -27,6 +28,7 @@ struct Room: Codable, Identifiable {
   let cancelRule: String
   let timeline: [Timeline]
   let discountStartedAt: String
+  var date: String?
   
   struct Attrs: Codable {
     /// 可容纳人数
@@ -49,6 +51,29 @@ struct Room: Codable, Identifiable {
 extension Room {
   var timeRanges: [TimeRange] {
     timeline.map { $0.timeRange }
+  }
+}
+
+extension Room {
+  init(room: Room, date: String) {
+    id = room.id
+    productId = room.productId
+    title = room.title
+    cover = room.cover
+    images = room.images
+    price = room.price
+    point = room.point
+    bulb = room.bulb
+    discountPrice = room.discountPrice
+    discountPoint = room.discountPoint
+    discountBulb = room.discountBulb
+    stock = room.stock
+    store = room.store
+    attrs = room.attrs
+    cancelRule = room.cancelRule
+    timeline = room.timeline
+    discountStartedAt = room.discountStartedAt
+    self.date = date
   }
 }
 

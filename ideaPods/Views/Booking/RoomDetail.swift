@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct RoomDetail: View {
-  var room: Room
+  @ObservedObject var viewModel: RoomDetailViewModel
+  @State private var isActive = false
   
   var body: some View {
     VStack(spacing: 0) {
@@ -18,11 +19,13 @@ struct RoomDetail: View {
     .customNavigationBar()
   }
   
-  private var requirements: [(String, String)] = [
-    ("白板", "icon-whiteboard"),
-    ("电视", "icon-tv"),
-    ("投影", "icon-projector")
-  ]
+  private var requirements: [(String, String)] {
+    return [
+      ("白板", "icon-whiteboard"),
+      ("电视", "icon-tv"),
+      ("投影", "icon-projector")
+    ]
+  }
   
   private func buildSection<Content: View>(title: String, @ViewBuilder content: () -> Content) -> some View {
     VStack(alignment: .leading, spacing: 0) {
@@ -42,7 +45,7 @@ struct RoomDetail: View {
       HStack {
         VStack(alignment: .leading, spacing: 2) {
           HStack(spacing: 4) {
-            Text("200")
+            Text("\(viewModel.room.point)")
             Text("积分/灯泡")
               .font(.caption)
           }
@@ -51,14 +54,16 @@ struct RoomDetail: View {
             .font(.caption)
         }
         Spacer()
-        Button("提交") {
-          
+        NavigationLink(destination: RoomPayment(viewModel: RoomPaymentViewModel(room: viewModel.room)), isActive: $isActive) {
+          Button("提交") {
+            isActive.toggle()
+          }
+          .font(.footnote)
+          .foregroundColor(Color(.systemBackground))
+          .frame(width: 90, height: 36)
+          .background(Color.primary)
+          .clipShape(RoundedRectangle(cornerRadius: 18))
         }
-        .font(.footnote)
-        .foregroundColor(Color(.systemBackground))
-        .frame(width: 90, height: 36)
-        .background(Color.primary)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
       }
       .padding(.horizontal)
       .frame(height: 68)
@@ -76,15 +81,15 @@ struct RoomDetail: View {
           .clipped()
         
         VStack(alignment: .leading, spacing: 6) {
-          Text("空中会议室")
+          Text(viewModel.room.title)
             .font(.title3)
             .fontWeight(.medium)
           
-          Label("ideaPod guomao", systemImage: "building.2.crop.circle")
+          Label(viewModel.room.store.name, systemImage: "building.2.crop.circle")
             .foregroundColor(Color.primary.opacity(0.8))
             .font(.caption)
           
-          Label("可容纳 1-10 人", image: "icon-booking-people")
+          Label("可容纳 1-\(viewModel.room.attrs.capacity) 人", image: "icon-booking-people")
             .foregroundColor(Color.primary.opacity(0.8))
             .font(.caption)
         }
@@ -103,7 +108,7 @@ struct RoomDetail: View {
         
         Group {
           // timeline view
-          TimeLine(timeRanges: room.timeRanges)
+          TimeLine(timeRanges: viewModel.room.timeRanges)
             .padding(.horizontal)
           
           // unvaliable time
@@ -120,21 +125,25 @@ struct RoomDetail: View {
           HStack {
             Text("预定日期")
             Spacer()
-            Button(action: {}, label: {
-              Text("2021-04-26")
+            Button(action: viewModel.presentDatePicker, label: {
+              Text(viewModel.date.dateStr)
               Image(systemName: "chevron.right").font(.footnote)
             })
             .foregroundColor(.primary)
             .padding()
           }
           .padding(.horizontal)
+          .sheet(isPresented: $viewModel.showsDatePicker) {
+            DatePicker("选择预订日期", selection: $viewModel.date, in: viewModel.date...)
+              .datePickerStyle(WheelDatePickerStyle())
+          }
           
           separator()
         }
         
         buildSection(title: "地点") {
           HStack {
-            Label("北京市朝阳区通惠河北路郎家园6号郎园vintage3号楼1层", systemImage: "location.fill")
+            Label(viewModel.room.store.address, systemImage: "location.fill")
             Spacer()
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
               Image(systemName: "chevron.right").font(.subheadline)
@@ -167,7 +176,7 @@ struct RoomDetail: View {
         
         VStack(alignment: .leading, spacing: 8) {
           Text("会议取消规则")
-          Text("会议前X小时取消，退还XX积分/灯泡；会议前X小时取消，退还XX积分/灯泡")
+          Text(viewModel.room.cancelRule)
             .font(.footnote)
         }
         .padding()
