@@ -12,7 +12,8 @@ struct ideaPodsApp: App {
   var body: some Scene {
     WindowGroup {
       if Account.user != nil {
-        ContentView()
+//        ContentView()
+        RoomList()
       } else {
         LoginView()
       }

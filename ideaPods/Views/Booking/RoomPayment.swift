@@ -33,7 +33,7 @@ struct RoomPayment: View {
         
         VStack(alignment: .leading, spacing: 4) {
           Text(viewModel.room.title)
-            .font(.headline)
+            .font(.title3)
           Text(viewModel.room.store.name)
             .font(.footnote)
             .foregroundColor(.secondary)
@@ -42,7 +42,7 @@ struct RoomPayment: View {
         Spacer()
         HStack(spacing: 2) {
           Text("\(viewModel.room.point)")
-            .font(.callout.bold())
+            .font(.body.bold())
           Text("积分")
             .font(.caption)
         }
@@ -61,25 +61,25 @@ struct RoomPayment: View {
       HStack {
         Text("优惠券")
           .foregroundColor(.primary.opacity(0.8))
-          .font(.subheadline)
+          .font(.callout)
         Spacer()
         Text("暂无可用券")
-          .font(.subheadline)
+          .font(.callout)
           .foregroundColor(.secondary)
       }
       HStack {
         Text("会员折扣")
           .foregroundColor(.primary.opacity(0.8))
-          .font(.subheadline)
+          .font(.callout)
         Spacer()
         Text("无")
-          .font(.subheadline)
+          .font(.callout)
           .foregroundColor(.secondary)
       }
       HStack(spacing: 2) {
         Text("小计")
           .foregroundColor(.primary.opacity(0.8))
-          .font(.subheadline)
+          .font(.callout)
         Spacer()
         Text("\(viewModel.room.point)")
           .bold()
@@ -120,10 +120,10 @@ struct RoomPayment: View {
     HStack {
       Text(title)
         .foregroundColor(.primary.opacity(0.8))
-        .font(.subheadline)
+        .font(.callout)
       Spacer()
       Text(value)
-        .font(.subheadline)
+        .font(.callout)
         .multilineTextAlignment(.trailing)
         .padding(.leading, 100)
     }
